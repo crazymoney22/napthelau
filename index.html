@@ -3,204 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Nạp Thẻ Tự Động</title>
+    <title>SHOP NẠP GAME GIÁ RẺ 2026 - UY TÍN SỐ 1</title>
     <style>
-        /* --- CẤU HÌNH GIAO DIỆN CHUNG --- */
+        /* --- ĐỊNH DẠNG CHUNG (DARK MODE GAMING) --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: #0f111a;
-            color: #e3e6ed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: #0b0e14;
+            color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .napthe-container {
-            background-color: #161b26;
-            width: 100%;
-            max-width: 500px;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            border: 1px solid #232d3f;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 8px;
-            color: #ff9f43;
+        /* --- THANH THÔNG BÁO CHẠY CHỮ --- */
+        .marquee-notice {
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            color: white;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 14px;
             text-transform: uppercase;
-            font-size: 22px;
-            letter-spacing: 1px;
+            border-bottom: 2px solid #ff4757;
         }
 
-        .subtitle {
-            text-align: center;
-            font-size: 13px;
-            color: #8a99ad;
-            margin-bottom: 25px;
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            background-color: #151a24;
+            padding: 15px 0;
+            border-bottom: 1px solid #232d3f;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            text-transform: uppercase;
         }
 
-        /* --- THIẾT KẾ FORM --- */
+        /* --- KHU VỰC CHÍNH --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .box {
+            background-color: #151a24;
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #232d3f;
+            margin-bottom: 20px;
+        }
+
+        .box-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-left: 4px solid #00ff88;
+            padding-left: 10px;
+        }
+
+        /* --- FORM NHẬP THÔNG TIN --- */
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
-
         label {
             display: block;
-            margin-bottom: 8px;
             font-size: 14px;
-            font-weight: 600;
-            color: #cbd5e1;
+            color: #94a3b8;
+            margin-bottom: 8px;
         }
-
-        select, input {
+        input, select {
             width: 100%;
             padding: 12px;
-            background-color: #0f111a;
+            background-color: #0b0e14;
             border: 1px solid #2d3748;
             border-radius: 6px;
             color: white;
             font-size: 15px;
             outline: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
         }
 
-        select:focus, input:focus {
-            border-color: #ff9f43;
-            box-shadow: 0 0 8px rgba(255, 159, 67, 0.2);
+        /* --- GRID CHỌN GAME / GÓI NẠP --- */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
         }
-
-        /* Tùy chỉnh danh sách lựa chọn */
-        select option {
-            background: #161b26;
-            color: white;
+        .game-item {
+            background-color: #1e2533;
+            border: 2px solid #2d3748;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+        .game-item:hover, .game-item.active {
+            border-color: #00ff88;
+            background-color: #152e26;
+            color: #00ff88;
         }
 
         /* --- NÚT BẤM --- */
-        .btn-submit {
+        .btn-pay {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+            padding: 15px;
+            background: linear-gradient(90deg, #00ff88, #00bc62);
+            color: #0b0e14;
+            font-size: 16px;
+            font-weight: 800;
             border: none;
             border-radius: 6px;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
         }
 
-        .btn-submit:hover {
-            opacity: 0.9;
-            box-shadow: 0 4px 15px rgba(255, 114, 94, 0.4);
+        /* --- LỊCH SỬ NẠP GIẢ LẬP (LIVE FEED) --- */
+        .live-history {
+            max-height: 320px;
+            overflow: hidden;
+            position: relative;
         }
-
-        /* --- LƯU Ý --- */
-        .note-box {
-            background-color: rgba(255, 159, 67, 0.1);
-            border-left: 4px solid #ff9f43;
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 20px;
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #232d3f;
             font-size: 13px;
-            color: #ffb061;
-            line-height: 1.5;
+            animation: fadeIn 0.5s ease;
+        }
+        .user-anon { color: #38bdf8; font-weight: 600; }
+        .game-tag { background-color: #1e2533; padding: 2px 6px; border-radius: 4px; font-size: 11px;}
+        .status-success { color: #4ade80; font-weight: bold; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<div class="napthe-container">
-    <h2>Nạp Thẻ Cào Tự Động</h2>
-    <div class="subtitle">Hệ thống xử lý thẻ cào siêu tốc 3s - 5s</div>
-
-    <form id="naptheForm" onsubmit="handleFormSubmit(event)">
-        <div class="form-group">
-            <label for="username">Tên tài khoản / ID Game:</label>
-            <input type="text" id="username" placeholder="Nhập tài khoản cần nạp..." required>
-        </div>
-
-        <div class="form-group">
-            <label for="telco">Chọn nhà mạng:</label>
-            <select id="telco" required>
-                <option value="">-- Chọn loại thẻ --</option>
-                <option value="VIETTEL">Viettel</option>
-                <option value="MOBIFONE">Mobifone</option>
-                <option value="VINAPHONE">Vinaphone</option>
-                <option value="ZING">Thẻ Zing</option>
-                <option value="GATE">Thẻ Gate</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Mệnh giá thẻ:</label>
-            <select id="amount" required>
-                <option value="">-- Chọn mệnh giá --</option>
-                <option value="10000">10,000 đ</option>
-                <option value="20000">20,000 đ</option>
-                <option value="50000">50,000 đ</option>
-                <option value="100000">100,000 đ</option>
-                <option value="200000">200,000 đ</option>
-                <option value="500000">500,000 đ</option>
-                <option value="1000000">1,000,000 đ</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="code">Mã số thẻ (Dưới lớp bạc):</label>
-            <input type="text" id="code" placeholder="Nhập mã thẻ..." pattern="[0-9a-zA-Z]+" title="Mã thẻ chỉ gồm số hoặc chữ" required>
-        </div>
-
-        <div class="form-group">
-            <label for="serial">Số Seri thẻ:</label>
-            <input type="text" id="serial" placeholder="Nhập số seri..." pattern="[0-9a-zA-Z]+" title="Số seri chỉ gồm số hoặc chữ" required>
-        </div>
-
-        <button type="submit" class="btn-submit">Nạp Thẻ Ngay</button>
-    </form>
-
-    <div class="note-box">
-        <strong>* Lưu ý quan trọng:</strong> 
-        <br>- Vui lòng chọn đúng nhà mạng và mệnh giá. Sai mệnh giá sẽ bị phạt mất 100% giá trị thẻ.
-        <br>- Giữ lại thẻ cho đến khi hệ thống báo nạp thành công.
+    <div class="marquee-notice">
+        <marquee scrollamount="5">🔥 SỰ KIỆN KHUYẾN MÃI LỚN NĂM 2026: NẠP QUA THẺ CÀO X2 GIÁ TRỊ, NẠP QUA ATM/MOMO X3 SỐ LƯỢNG VP GAME! XỬ LÝ TỰ ĐỘNG TRONG 3 GIÂY! 🔥</marquee>
     </div>
-</div>
 
-<script>
-    function handleFormSubmit(event) {
-        event.preventDefault(); // Ngăn trang web tải lại khi bấm nút
+    <header>
+        <div class="container header-content">
+            <div class="logo">SHOPNAPLAU 2026</div>
+            <div style="font-size: 14px; color: #94a3b8;">Hệ thống nạp tự động API v2.6</div>
+        </div>
+    </header>
 
-        // Lấy dữ liệu từ các ô nhập
-        const username = document.getElementById('username').value.trim();
-        const telco = document.getElementById('telco').value;
-        const amount = parseInt(document.getElementById('amount').value).toLocaleString('vi-VN') + 'đ';
-        const code = document.getElementById('code').value.trim();
-        const serial = document.getElementById('serial').value.trim();
+    <div class="container main-layout">
+        
+        <div class="left-side">
+            <div class="box">
+                <div class="box-title">Bước 1: Chọn Game Cần Nạp</div>
+                <div class="game-grid">
+                    <div class="game-item active" onclick="changeGame(this, 'Roblox')">Roblox</div>
+                    <div class="game-item" onclick="changeGame(this, 'Liên Quân')">Liên Quân</div>
+                    <div class="game-item" onclick="changeGame(this, 'Free Fire')">Free Fire</div>
+                    <div class="game-item" onclick="changeGame(this, 'FiFa Mobile')">FiFa Mobile</div>
+                </div>
+            </div>
 
-        // Hiển thị thông tin kiểm tra (Giả lập gửi dữ liệu)
-        alert(`Gửi thông tin thẻ thành công!\n\n` +
-              `• Tài khoản: ${username}\n` +
-              `• Loại thẻ: ${telco}\n` +
-              `• Mệnh giá: ${amount}\n` +
-              `• Mã thẻ: ${code}\n` +
-              `• Số Seri: ${serial}\n\n` +
-              `Hệ thống đang kiểm tra thẻ, vui lòng đợi!`);
-              
-        // Xóa trắng form sau khi nạp xong
-        document.getElementById('naptheForm').reset();
-    }
-</script>
+            <div class="box">
+                <div class="box-title">Bước 2: Thông Tin Đơn Hàng</div>
+                <form id="orderForm" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label id="labelAccount">Tài khoản đăng nhập Game:</label>
+                        <input type="text" id="account" placeholder="Nhập tên tài khoản hoặc email..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu nick (Để nạp gói lậu/chính hãng trực tiếp):</label>
+                        <input type="password" id="password" placeholder="Nhập mật khẩu game..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Chọn Gói Cần Nạp (Đồng giá 50k - Siêu Rẻ):</label>
+                        <select id="package" required>
+                            <option value="Gói 1">Gói Thử Nghiệm: 50,000đ (Nhận 2,500 Kim Cương/Robux)</option>
+                            <option value="Gói 2" selected>Gói Phổ Thông: 100,000đ (Nhận 6,000 Kim Cương/Robux)</option>
+                            <option value="Gói 3">Gói VIP Đua Top: 200,000đ (Nhận 15,000 Kim Cương/Robux)</option>
+                            <option value="Gói 4">Gói Siêu Cấp Đại Gia: 500,000đ (Nhận 40,000 Kim Cương/Robux)</option>
+                        </select>
+                    </div>
 
+                    <div style="border-top: 1px solid #232d3f; margin: 20px 0; padding-top: 15px;">
+                        <label style="color: #ff4757; font-weight: bold;">Phương Thức Thanh Toán Thẻ Cào:</label>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="cardType" required>
+                            <option value="VIETTEL">Viettel (Khuyên dùng)</option>
+                            <option value="MOBIFONE">Mobifone</option>
+                            <option value="VINAPHONE">Vinaphone</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="serial" placeholder="Nhập Số Seri thẻ cào..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="pin" placeholder="Nhập Mã Thẻ (Dưới lớp bạc)..." required>
+                    </div>
+
+                    <button type="submit" class="btn-pay">Xác Nhận Nạp Ngay</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="box">
+                <div class="box-title">⚡ Người Dùng Nạp Gần Đây</div>
+                <div class="live-history" id="historyBox">
+                    </div>
+            </div>
+            
+            <div class="box" style="background-color: #1c1626; border-color: #3b2354;">
+                <div class="box-title" style="color: #b57cff; border-left-color: #b57cff;">⚠️ Lưu Ý An Toàn</div>
+                <p style="font-size: 13px; color: #a78bfa; line-height: 1.6;">
+                    - Vui lòng tắt bảo mật 2 lớp (2FA) trước khi thực hiện mua các gói nạp trực tiếp để tránh lỗi đơn hàng.<br><br>
+                    - Điền đúng thông tin thẻ cào. Hệ thống tự động gạch thẻ, sai số seri hoặc mã thẻ đơn hàng sẽ bị huỷ bỏ.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentGame = "Roblox";
+
+        function changeGame(element, gameName) {
+            document.querySelectorAll('.game-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+            currentGame = gameName;
+            document.getElementById('labelAccount').innerText = `Tài khoản đăng nhập Game (${gameName}):`;
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            const acc = document.getElementById('account').value;
+            const pkg = document.getElementById('package').value;
+            
+            alert(`[Hệ thống 2026] Đang xử lý đơn hàng!\n\n` +
+                  `• Game: ${currentGame}\n` +
+                  `• Tài khoản: ${acc}\n` +
+                  `• Gói mua: ${pkg}\n\n` +
+                  `Hệ thống đang gửi dữ liệu thẻ lên cổng thanh toán trung gian, vui lòng đợi kết quả trong vài phút.`);
+        }
+
+        // --- GIẢ LẬP BOX LỊCH SỬ NẠP CHẠY TỰ ĐỘNG ---
+        const names = ["khanh***", "pro_game***", "hoang9x***", "tuan_vip***", "roblox_player***", "girl_cute***", "admin_test***", "vng_lậu***"];
+        const games = ["Roblox", "Liên Quân", "Free Fire", "FiFa Mobile"];
+        const prices = ["50.000đ", "100.000đ", "200.000đ", "500.000đ"];
+        const historyBox = document.getElementById('historyBox');
+
+        function generateLiveHistory() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomGame = games[Math.floor(Math.random() * games.length)];
+            const randomPrice = prices[Math.floor(Math.random() * prices.length)];
+
+            const itemHTML = `
+                <div class="history-item">
+                    <div>
+                        <span class="user-anon">${randomName}</span> 
+                        <span class="game-tag">${randomGame}</span>
+                    </div>
+                    <div>Vừa nạp <span style="color:#ffb061">${randomPrice}</span></div>
+                    <div class="status-success">Thành công</div>
+                </div>
+            `;
+            
+            historyBox.insertAdjacentHTML('afterbegin', itemHTML);
+
+            // Giới hạn hiển thị 6 dòng gần nhất cho đẹp giao diện
+            if (historyBox.children.length > 6) {
+                historyBox.removeChild(historyBox.lastChild);
+            }
+        }
+
+        // Khởi tạo chạy ban đầu
+        for(let i=0; i<5; i++) { generateLiveHistory(); }
+        // Cứ mỗi 3 giây thêm 1 người nạp mới ngẫu nhiên
+        setInterval(generateLiveHistory, 3000);
+    </script>
 </body>
 </html>
